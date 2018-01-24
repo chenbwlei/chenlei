@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserDao">
+    <select id="login" resultType="com.example.demo.dto.Doctor" parameterType="com.example.demo.dto.Doctor">
+    	select * from a_doctor where dname=#{dname} and password=#{password}
+    </select>
+    <select id="mession" resultType="com.example.demo.dto.Message">
+    	select * from a_message
+    </select>
+    <select id="us" resultType="com.example.demo.dto.User">
+    	select *from a_user
+    </select>
+    <update id="up" parameterType="com.example.demo.dto.Message">
+    	update a_message set gua=3 where mid = #{mid}
+    </update>
+</mapper>  

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserDao">
+	<select id="login" resultType="com.example.demo.dto.User" parameterType="com.example.demo.dto.User">
+		select * from user where username=#{username} and password=#{password}
+	</select>
+	<insert id="sign" parameterType="com.example.demo.dto.User">
+		insert into user(username,password,name,gender,regTime) values(#{username},#{password},#{name},#{gender},#{regTime})
+	</insert>
+	<select id="ticket" resultType="com.example.demo.dto.Ticket" parameterType="com.example.demo.utils.PageUtil">
+		select * from ticket limit #{page.startIndex},#{page.pageSize}
+	</select>
+	<update id="newup" parameterType="com.example.demo.dto.User">
+		update user set username=#{username},name=#{name},password=#{password},gender=#{gender},idCard=#{idCard},telno=#{telno},address=#{address} where uid=#{uid}
+	</update>
+	<update id="mon" parameterType="com.example.demo.dto.User">
+		update user set balance=#{balance} where username=#{username}
+	</update>
+	<select id="totalCount" resultType="int">
+		select count(1) from ticket
+	</select>
+	<select id="cart" resultType="com.example.demo.dto.Ticket" parameterType="com.example.demo.dto.Ticket">
+		select * from ticket where tid=#{tid}
+	</select>
+</mapper>  
